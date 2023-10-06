@@ -1,0 +1,35 @@
+<form id="post-editor" *ngIf="!isLoading" [formGroup]="editorForm">
+  <mat-form-field>
+    <input
+      matInput
+      formControlName="title"
+      placeholder="Post Title"
+      type="text"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput="false"
+      formControlName="description"
+      placeholder="Post Description"
+      type="text"/>
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea
+      matInput
+      formControlName="body"
+      placeholder="Post About">
+    </textarea>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    [disabled]="editorForm.invalid"
+    (click)="submit()"
+  >
+    Publish
+  </button>
+</form>
+
+<mat-spinner *ngIf="isLoading"></mat-spinner>

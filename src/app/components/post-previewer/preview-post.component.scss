@@ -1,0 +1,21 @@
+mat-card {
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+
+    .header {
+      width: 100%;
+    }
+  }
+
+  mat-card-header:nth-of-type(2) {
+    align-self: start;
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+}

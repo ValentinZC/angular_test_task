@@ -1,0 +1,51 @@
+.articles {
+  flex-direction: column;
+
+  .article {
+    width: 100%;
+    padding: 1em 0;
+
+    .primary {
+      color: $primary;
+    }
+
+    &:nth-child(odd) mat-card {
+      background-color: $background-hover;
+    }
+
+    mat-icon {
+      color: $primary;
+    }
+
+
+    &:nth-child(odd) button {
+      background-color: #fff;
+      border: 1px solid $background-hover;
+    }
+
+    &:nth-child(even) button {
+      background-color: $background-hover;
+      border: 1px solid  #fff;
+    }
+
+    button{
+      padding: .3rem .5rem;
+      cursor: pointer;
+    }
+
+  }
+}
+
+.empty {
+  display: flex;
+  column-gap: .2em;
+  font-size: 25px;
+  color: $primary;
+  height: 80vh;
+
+  & mat-icon {
+    font-size: 25px;
+  }
+}
+
+

@@ -1,0 +1,35 @@
+#post-editor {
+  display: flex;
+  flex-direction: column;
+  max-width: 80%;
+
+  input {
+    border: 1px solid $primary;
+    background-color: $background-hover;
+    padding: 1rem;
+  }
+
+  input:nth-child(1) {
+    font-size: 24px;
+  }
+
+  textarea {
+    border: 1px solid $primary;
+    background-color: $background-hover;
+    resize: vertical;
+    padding: 1rem;
+  }
+
+  button {
+    border: 1px solid $primary;
+    align-self: flex-end;
+  }
+
+  .mdc-text-field {
+    padding: 0;
+  }
+
+  .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+    padding: 0;
+  }
+}

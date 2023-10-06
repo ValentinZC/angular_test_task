@@ -1,0 +1,19 @@
+#feed-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 1.5em;
+  position: relative;
+
+  .filter {
+    align-self: flex-end;
+    min-width: 350px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+}

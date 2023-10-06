@@ -1,0 +1,41 @@
+#post-viewer {
+  mat-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-card-header {
+    background-color: $background-hover;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  mat-card-content {
+    padding: 3rem 2rem;
+  }
+
+  mat-card-footer {
+    padding: 3rem 2rem;
+  }
+
+  .action {
+    display: flex;
+    column-gap: 1rem;
+    align-items: center;
+
+    button {
+      background-color: $background-hover;
+      border: 1px solid #fff;
+      padding: .5em;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    &:nth-child(1) button {
+      background-color: #fff;
+      border: 1px solid $background-hover;
+    }
+  }
+}

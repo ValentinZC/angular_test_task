@@ -1,0 +1,21 @@
+<button
+  class="follow-btn"
+  mat-raised-button
+  (click)="toggleFollowing()"
+  [disabled]="isSubmitting"
+>
+  <ng-container
+    *ngTemplateOutlet="profile.following ? unfollow : follow"
+  ></ng-container>
+</button>
+
+
+<ng-template #follow>
+  <mat-icon>person_add</mat-icon>
+  <span>FOLLOW</span>
+</ng-template>
+
+<ng-template #unfollow>
+  <mat-icon>person_outline</mat-icon>
+  <span>UNFOLLOW</span>
+</ng-template>
