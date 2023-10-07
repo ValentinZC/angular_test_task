@@ -18,12 +18,11 @@ export class PostFeedComponent implements OnInit, OnDestroy, OnChanges{
   public isLoad = false;
   public articlesCount: number;
   public isFollowingFeed: boolean;
+  public currentPage = 1;
 
   @Input() config: IFeedConfig;
-
   private username: string | undefined;
   private destroy$= new Subject<void>();
-  private currentPage = 1;
   private limit = 10
   protected readonly EMPTY_LIST = EMPTY_LIST;
   protected readonly FeedType = FeedType;
@@ -73,14 +72,16 @@ export class PostFeedComponent implements OnInit, OnDestroy, OnChanges{
     this.articles = [];
     this.config.filters = {};
 
+    if (this.username && this.config.type === FeedType.Own) {
+      this.currentPage = 1;
+      this.config.filters.author = this.username;
+      this.config.type = this.isFollowingFeed ? FeedType.Favorite : FeedType.Own;
+    }
+
+
     if(this.limit) {
       this.config.filters.limit = this.limit;
       this.config.filters.offset = this.limit * (this.currentPage - 1);
-    }
-
-    if (this.username && this.config.type === FeedType.Own) {
-      this.config.filters.author = this.username;
-      this.config.type = this.isFollowingFeed ? FeedType.Favorite : FeedType.Own;
     }
 
     this.articleService.getArticles(this.config)

@@ -30,6 +30,7 @@
   *ngIf="articles.length"
   (onChangePage)="setPostFeedByPaginator($event)"
   [length]="articlesCount"
+  [pageIndex]="currentPage - 1"
 ></app-paginator>
 
 <div class="preview-wrapper empty" *ngIf="!isLoad && !articles.length">

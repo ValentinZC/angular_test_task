@@ -1,7 +1,7 @@
 <div id="app">
   <app-header></app-header>
   <mat-progress-bar
-    *ngIf="loader$ | async"
+    *ngIf="isLoad"
     mode="indeterminate"
   ></mat-progress-bar>
   <router-outlet></router-outlet>

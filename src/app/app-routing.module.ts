@@ -30,15 +30,18 @@ const routes: Routes = [
   },
   {
     path: 'new-article',
-    component: NewArticleComponent
+    component: NewArticleComponent,
+    canActivate: [withAuth]
   },
   {
     path: 'edit/:slug',
-    component: NewArticleComponent
+    component: NewArticleComponent,
+    canActivate: [withAuth]
   },
   {
     path: 'article/:slug',
-    component: ArticleComponent
+    component: ArticleComponent,
+    canActivate: [withAuth],
   },
   {
     path: '**',

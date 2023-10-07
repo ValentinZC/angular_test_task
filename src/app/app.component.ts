@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { LoaderService } from "./services/loader.service";
-import { Observable, Subject, takeUntil } from "rxjs";
+import { Subject, takeUntil } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -8,16 +8,22 @@ import { Observable, Subject, takeUntil } from "rxjs";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  public loader$: Observable<boolean>
+  public isLoad: boolean;
   public destroy$: Subject<void> = new Subject<void>();
 
   constructor(
     private loaderService: LoaderService,
+    private cdr: ChangeDetectorRef
     ) {
   }
 
   ngOnInit(): void {
-    this.loader$ = this.loaderService.isLoading.asObservable().pipe(takeUntil(this.destroy$));
+    this.loaderService.isLoading
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(isLoad => {
+        this.isLoad = isLoad;
+        this.cdr.detectChanges()
+      })
   }
 
   ngOnDestroy(): void {

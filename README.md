@@ -2,26 +2,32 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
 
-## Development server
+Node v18.16.1
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+API Specs - https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger/
 
-## Code scaffolding
+Demo
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Description
 
-## Build
+This project is a test task.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+A simple social news feed in which you can leave posts, comment on them, follow the authors of articles.
 
-## Running unit tests
+The application allows users to view and interact with posts from their friends. Each post should have the following properties:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Author: The user who created the post.
+- Content: The text content of the post.
+- Timestamp: The date and time when the post was created.
+- Likes: The number of likes the post has received.
+- Comments: An array of comments on the post, each containing a commentary and the comment text.
 
-## Running end-to-end tests
+## Requirements
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- [x] Create a post service that handles retrieving posts from a RESTful API. Use Angular's HttpClient module to communicate with the API.
+- [x] Implement a feed component that displays a list of posts from the user's friends. Include pagination to load more posts as the user scrolls.
+- [x] Add a post component that allows users to create new posts. Use Angular's Reactive Forms for validation and capturing user input.
+- [x] Implement a "Like" functionality that allows users to like/unlike posts. Update the like count accordingly.
+- [x] Implement a "Comment" functionality that allows users to add comments to posts. Display the comments on the post and update the comment count.
+- [x] Use Angular Material components for the user interface elements, such as cards, buttons, and forms.
+- [x] Apply proper error handling and display meaningful error messages to the user in case of API failures or validation errors.
