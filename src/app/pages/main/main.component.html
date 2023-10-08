@@ -3,7 +3,11 @@
     <div class="tabs">
       <li
         class="tab"
-        [ngClass]="{ active: postFeedConfig.type === FeedType.Own }">
+        [ngClass]="{
+          active:
+            postFeedConfig.type === FeedType.Own ||
+            postFeedConfig.type === FeedType.Favorite
+        }">
         <button (click)="setFeed(FeedType.Own)">Your Feed</button>
       </li>
       <li

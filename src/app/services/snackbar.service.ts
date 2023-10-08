@@ -20,7 +20,7 @@ export class SnackbarService {
     vPos?: MatSnackBarVerticalPosition
   ): void {
     this.snackBar.open(message, 'close', {
-      duration: time || 300000,
+      duration: time || 3000,
       horizontalPosition: hPos || 'right',
       verticalPosition: vPos || 'top',
       panelClass: className || 'snackbar-success',
