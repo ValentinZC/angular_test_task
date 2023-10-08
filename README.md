@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Node v18.16.1
 
-API Specs - https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger/
+[API Specs](https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger/)
 
 Demo
 
