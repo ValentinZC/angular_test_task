@@ -17,7 +17,6 @@
       color: $primary;
     }
 
-
     &:nth-child(odd) button {
       background-color: #fff;
       border: 1px solid $background-hover;
@@ -25,20 +24,19 @@
 
     &:nth-child(even) button {
       background-color: $background-hover;
-      border: 1px solid  #fff;
+      border: 1px solid #fff;
     }
 
-    button{
-      padding: .3rem .5rem;
+    button {
+      padding: 0.3rem 0.5rem;
       cursor: pointer;
     }
-
   }
 }
 
 .empty {
   display: flex;
-  column-gap: .2em;
+  column-gap: 0.2em;
   font-size: 25px;
   color: $primary;
   height: 80vh;
@@ -47,5 +45,3 @@
     font-size: 25px;
   }
 }
-
-

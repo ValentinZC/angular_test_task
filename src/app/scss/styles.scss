@@ -1,14 +1,23 @@
-@import "variables";
+@import 'variables';
 @import 'snackbar';
-@import "tab";
-@import "feed";
-@import "post-viewer";
-@import "post-editor";
-@import "post-comment";
-@import "follow-btn";
-@import "toggler";
-@import "loader";
+@import 'tab';
+@import 'feed';
+@import 'post-viewer';
+@import 'post-editor';
+@import 'post-comment';
+@import 'follow-btn';
+@import 'toggler';
+@import 'loader';
 
-* { box-sizing: border-box }
-html, body { height: 100%; margin: 0; padding: 0; }
-body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

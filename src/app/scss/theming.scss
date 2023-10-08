@@ -4,13 +4,14 @@
 $social-feed-primary: mat.define-palette(mat.$indigo-palette);
 $social-feed-accent: mat.define-palette(mat.$red-palette);
 $social-feed-warn: mat.define-palette(mat.$orange-palette, A700);
-$social-feed-theme: mat.define-light-theme((
-  color: (
-    primary: $social-feed-primary,
-    accent: $social-feed-accent,
-    warn: $social-feed-warn,
+$social-feed-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $social-feed-primary,
+      accent: $social-feed-accent,
+      warn: $social-feed-warn,
+    ),
   )
-));
+);
 
 @include mat.all-component-themes($social-feed-theme);
-

@@ -11,20 +11,20 @@
 .mat-mdc-snack-bar-container {
   &.snackbar-success {
     --mdc-snackbar-container-color: #445ad3;
-    @extend .snackbar
+    @extend .snackbar;
   }
 }
 
 .mat-mdc-snack-bar-container {
   &.snackbar-error {
     --mdc-snackbar-container-color: #f44336;
-    @extend .snackbar
+    @extend .snackbar;
   }
 }
 
 .mat-mdc-snack-bar-container {
   &.snackbar-warn {
     --mdc-snackbar-container-color: #a99c2d;
-    @extend .snackbar
+    @extend .snackbar;
   }
 }

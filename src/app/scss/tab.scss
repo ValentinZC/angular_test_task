@@ -16,22 +16,22 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $background-hover
+      background-color: $background-hover;
     }
 
     &.active {
       padding-bottom: 0;
-      border-bottom: .3rem solid $primary;
+      border-bottom: 0.3rem solid $primary;
     }
 
     button {
       background-color: #fff;
       border: none;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
       cursor: pointer;
 
       &:hover {
-        background-color: $background-hover
+        background-color: $background-hover;
       }
     }
   }
