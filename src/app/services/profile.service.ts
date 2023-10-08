@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from "rxjs";
-import { IProfileResponse } from "../models/user";
-import { HttpClient } from "@angular/common/http";
-import { IAuthor } from "../models/article";
+import { map, Observable } from 'rxjs';
+import { IProfileResponse } from '../models/user';
+import { HttpClient } from '@angular/common/http';
+import { IAuthor } from '../models/article';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   follow(username: string): Observable<IAuthor> {
     return this.http

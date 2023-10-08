@@ -1,11 +1,11 @@
-import { IAuthor } from "./article";
+import { IAuthor } from './article';
 
 export interface IUser {
   email: string;
   username: string;
-  token: string
+  token: string;
 }
 
 export interface IProfileResponse {
-  profile: IAuthor
+  profile: IAuthor;
 }

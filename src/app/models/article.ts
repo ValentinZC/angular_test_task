@@ -1,4 +1,4 @@
-import { FormControl } from "@angular/forms";
+import { FormControl } from '@angular/forms';
 
 export interface IArticle {
   slug: string;
@@ -18,7 +18,7 @@ export interface IArticlesResponse {
 }
 
 export interface IAuthor {
-  username: string
+  username: string;
   following: boolean;
 }
 

@@ -1,22 +1,22 @@
-import { IAuthor } from "./article";
+import { IAuthor } from './article';
 
 export interface IComment {
   id: string;
   createdAt: string;
-  author: IAuthor
+  author: IAuthor;
   body: string;
 }
 
 export interface ICommentResponse {
-  comment: IComment
+  comment: IComment;
 }
 
 export interface ICommentsResponse {
-  comments: IComment[]
+  comments: IComment[];
 }
 
 export interface ICommentPayload {
   comment: {
-    body: string
-  }
+    body: string;
+  };
 }

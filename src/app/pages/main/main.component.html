@@ -3,17 +3,13 @@
     <div class="tabs">
       <li
         class="tab"
-        [ngClass]="{ active: postFeedConfig.type === FeedType.Own }"
-      >
-        <a
-          (click)="setFeed(FeedType.Own)"
-        >Your Feed</a>
+        [ngClass]="{ active: postFeedConfig.type === FeedType.Own }">
+        <button (click)="setFeed(FeedType.Own)">Your Feed</button>
       </li>
       <li
         class="tab"
-        [ngClass]="{ active: postFeedConfig.type === FeedType.Global }"
-      >
-        <a (click)="setFeed(FeedType.Global)">Global Feed</a>
+        [ngClass]="{ active: postFeedConfig.type === FeedType.Global }">
+        <button (click)="setFeed(FeedType.Global)">Global Feed</button>
       </li>
     </div>
   </nav>

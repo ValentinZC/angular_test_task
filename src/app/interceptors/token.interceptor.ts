@@ -3,20 +3,23 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from "../services/local-storage.service";
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+  constructor(private localStorageService: LocalStorageService) {}
 
-  constructor(private localStorageService: LocalStorageService) {
-  }
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     const token = this.localStorageService.getToken();
-    const setHeaders = { ...(token ? { Authorization: `Token ${token}` } : {})}
+    const setHeaders = {
+      ...(token ? { Authorization: `Token ${token}` } : {}),
+    };
 
     const req = request.clone({ setHeaders });
 

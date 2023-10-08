@@ -1,8 +1,7 @@
 <div id="article">
   <app-post-viewer
     [article]="article"
-    [isEditable]="isEditable"
-  ></app-post-viewer>
+    [isEditable]="isEditable"></app-post-viewer>
 
   <mat-card id="post-comment" *ngIf="article">
     <mat-card-content>
@@ -12,14 +11,10 @@
     <mat-card-content>
       <textarea
         [disabled]="isSubmitting"
-        [formControl]="commentFormControl"
-      ></textarea>
+        [formControl]="commentFormControl"></textarea>
 
-      <button
-        [disabled]="isSubmitting"
-        (click)="onSendComment()"
-      ><mat-icon>
-        send</mat-icon>
+      <button [disabled]="isSubmitting" (click)="onSendComment()">
+        <mat-icon> send</mat-icon>
       </button>
     </mat-card-content>
   </mat-card>
@@ -27,6 +22,5 @@
   <app-post-comment
     *ngFor="let comment of comments; trackBy: trackById"
     [comment]="comment"
-    (remove)="onRemoveComment(comment)"
-  ></app-post-comment>
+    (remove)="onRemoveComment(comment)"></app-post-comment>
 </div>

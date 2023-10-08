@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { map, Observable } from "rxjs";
-import { UserService } from "../../services/user.service";
-import { IComment } from "../../models/comment";
+import { map, Observable } from 'rxjs';
+import { UserService } from '../../services/user.service';
+import { IComment } from '../../models/comment';
 
 @Component({
   selector: 'app-post-comment',
   templateUrl: './post-comment.component.html',
-  styleUrls: ['./post-comment.component.scss']
+  styleUrls: ['./post-comment.component.scss'],
 })
 export class PostCommentComponent {
   public isEditable$: Observable<boolean>;
@@ -15,10 +15,9 @@ export class PostCommentComponent {
   @Output() remove = new EventEmitter<boolean>();
 
   constructor(private userService: UserService) {
-    this.isEditable$ = this.userService.currentUser
-      .pipe(
-        map(user => user?.username === this.comment.author.username)
-      )
+    this.isEditable$ = this.userService.currentUser.pipe(
+      map(user => user?.username === this.comment.author.username)
+    );
   }
 
   public onRemove(): void {

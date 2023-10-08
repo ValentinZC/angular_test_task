@@ -4,7 +4,7 @@
       matInput
       formControlName="title"
       placeholder="Post Title"
-      type="text"/>
+      type="text" />
   </mat-form-field>
 
   <mat-form-field>
@@ -12,22 +12,15 @@
       matInput="false"
       formControlName="description"
       placeholder="Post Description"
-      type="text"/>
+      type="text" />
   </mat-form-field>
 
   <mat-form-field>
-    <textarea
-      matInput
-      formControlName="body"
-      placeholder="Post About">
+    <textarea matInput formControlName="body" placeholder="Post About">
     </textarea>
   </mat-form-field>
 
-  <button
-    mat-raised-button
-    [disabled]="editorForm.invalid"
-    (click)="submit()"
-  >
+  <button mat-raised-button [disabled]="editorForm.invalid" (click)="submit()">
     Publish
   </button>
 </form>

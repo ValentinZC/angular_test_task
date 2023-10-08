@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { TOKEN_KEY } from "../constants/localStorage";
+import { TOKEN_KEY } from '../constants/localStorage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   getToken(): string | null {

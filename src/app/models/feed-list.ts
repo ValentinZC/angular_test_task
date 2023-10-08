@@ -13,5 +13,5 @@ export interface IFeedFilter {
 export enum FeedType {
   Global,
   Own,
-  Favorite
+  Favorite,
 }

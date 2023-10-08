@@ -1,24 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from "@angular/router";
-import { ArticleService } from "../../services/article.service";
-import { CommentService } from "../../services/comment.service";
-import { UserService } from "../../services/user.service";
-import { IArticle } from "../../models/article";
-import { IComment } from "../../models/comment";
-import { combineLatest, Subject, takeUntil, throwError } from "rxjs";
-import { catchError } from "rxjs/operators";
-import { SnackbarService } from "../../services/snackbar.service";
-import { INVALID_ARTICLE } from "../../constants/messages";
-import { IUser } from "../../models/user";
-import { FormControl } from "@angular/forms";
-import { ErrorListService } from "../../services/error-list.service";
+import { ActivatedRoute, Router } from '@angular/router';
+import { ArticleService } from '../../services/article.service';
+import { CommentService } from '../../services/comment.service';
+import { UserService } from '../../services/user.service';
+import { IArticle } from '../../models/article';
+import { IComment } from '../../models/comment';
+import { combineLatest, Subject, takeUntil, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { SnackbarService } from '../../services/snackbar.service';
+import { INVALID_ARTICLE } from '../../constants/messages';
+import { IUser } from '../../models/user';
+import { FormControl } from '@angular/forms';
+import { ErrorListService } from '../../services/error-list.service';
 
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
 })
-export class ArticleComponent implements OnInit, OnDestroy{
+export class ArticleComponent implements OnInit, OnDestroy {
   public article: IArticle;
   public comments: IComment[] = [];
   public commentFormControl: FormControl<string>;
@@ -36,32 +36,34 @@ export class ArticleComponent implements OnInit, OnDestroy{
     private route: ActivatedRoute,
     private snackbarService: SnackbarService,
     private errorListService: ErrorListService
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.commentFormControl = new FormControl<string>('', { nonNullable: true });
+    this.commentFormControl = new FormControl<string>('', {
+      nonNullable: true,
+    });
     const slug = this.route.snapshot.params['slug'];
 
     combineLatest([
       this.articleService.get(slug),
       this.commentService.getAll(slug),
-      this.userService.getCurrentUser()
+      this.userService.getCurrentUser(),
     ])
       .pipe(
         catchError(err => {
-          this.router.navigate(['/'])
-          this.snackbarService.openSnackbar(INVALID_ARTICLE, 'snackbar-error')
-          return throwError(err)
+          this.router.navigate(['/']);
+          this.snackbarService.openSnackbar(INVALID_ARTICLE, 'snackbar-error');
+          return throwError(err);
         })
       )
-      .subscribe(([article, comments, { user}]) => {
+      .subscribe(([article, comments, { user }]) => {
         this.article = article;
         this.comments = comments;
         this.currentUser = user;
 
-        this.isEditable = this.currentUser?.username === this.article.author.username;
-    })
+        this.isEditable =
+          this.currentUser?.username === this.article.author.username;
+      });
   }
 
   ngOnDestroy() {
@@ -74,29 +76,33 @@ export class ArticleComponent implements OnInit, OnDestroy{
       .removeById(this.article.slug, comment.id)
       .pipe(takeUntil(this.destroy$))
       .subscribe(() => {
-        this.comments = this.comments.filter(item => item.id !== comment.id)
-      })
+        this.comments = this.comments.filter(item => item.id !== comment.id);
+      });
   }
 
   public onSendComment(): void {
     this.isSubmitting = true;
 
-    this.commentService.create(this.article.slug, this.commentFormControl.value)
+    this.commentService
+      .create(this.article.slug, this.commentFormControl.value)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (comment) => {
+        next: comment => {
           this.comments.unshift(comment);
           this.commentFormControl.reset('');
           this.isSubmitting = false;
         },
-        error: (errors) => {
+        error: errors => {
           this.isSubmitting = false;
-          this.snackbarService.openSnackbar(this.errorListService.getErrorList(errors), 'snackbar-error');
+          this.snackbarService.openSnackbar(
+            this.errorListService.getErrorList(errors),
+            'snackbar-error'
+          );
         },
       });
   }
 
   public trackById(index: number, item: IComment): string {
-    return item.id
+    return item.id;
   }
 }

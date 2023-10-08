@@ -1,7 +1,7 @@
 <div id="header">
   <mat-toolbar color="primary">
     <span class="logo" routerLink="/">
-      {{'Amazing social feed' | uppercase}}
+      {{ 'Amazing social feed' | uppercase }}
     </span>
     <nav>
       <li *ngIf="getCurrentUser() | async as currentUser">
@@ -9,10 +9,7 @@
       </li>
 
       <li class="nav-item">
-        <button
-          mat-flat-button
-          class="nav-link"
-          routerLink="/about">
+        <button mat-flat-button class="nav-link" routerLink="/about">
           About
         </button>
       </li>
@@ -33,8 +30,7 @@
             mat-flat-button
             class="nav-link"
             routerLink="/register"
-            routerLinkActive="active"
-          >
+            routerLinkActive="active">
             Sign up
           </button>
         </li>
@@ -56,8 +52,7 @@
             mat-flat-button
             class="nav-link"
             color="accent"
-            (click)="logout()"
-          >
+            (click)="logout()">
             Logout
           </button>
         </li>

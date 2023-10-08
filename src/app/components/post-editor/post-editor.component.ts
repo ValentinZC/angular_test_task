@@ -1,19 +1,19 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { IEditorForm } from "../../models/article";
-import { combineLatest, Subject, takeUntil } from "rxjs";
-import { ArticleService } from "../../services/article.service";
-import { ActivatedRoute, Router } from "@angular/router";
-import { UserService } from "../../services/user.service";
-import { SnackbarService } from "../../services/snackbar.service";
-import { ErrorListService } from "../../services/error-list.service";
-import { POST_CREATE_SUCCESS } from "../../constants/messages";
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { IEditorForm } from '../../models/article';
+import { combineLatest, Subject, takeUntil } from 'rxjs';
+import { ArticleService } from '../../services/article.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { SnackbarService } from '../../services/snackbar.service';
+import { ErrorListService } from '../../services/error-list.service';
+import { POST_CREATE_SUCCESS } from '../../constants/messages';
 
 @Component({
   selector: 'app-post-editor',
-  templateUrl: './post-editor.component.html'
+  templateUrl: './post-editor.component.html',
 })
-export class PostEditorComponent implements OnDestroy, OnInit{
+export class PostEditorComponent implements OnDestroy, OnInit {
   public editorForm: FormGroup<IEditorForm>;
   public isSubmitting = false;
   public destroy$ = new Subject<void>();
@@ -30,17 +30,17 @@ export class PostEditorComponent implements OnDestroy, OnInit{
     this.editorForm = new FormGroup<IEditorForm>({
       title: new FormControl('', {
         validators: Validators.required,
-        nonNullable: true
+        nonNullable: true,
       }),
       description: new FormControl('', {
         validators: Validators.required,
-        nonNullable: true
+        nonNullable: true,
       }),
       body: new FormControl('', {
         validators: Validators.required,
-        nonNullable: true
+        nonNullable: true,
       }),
-    })
+    });
   }
 
   ngOnInit() {
@@ -73,18 +73,21 @@ export class PostEditorComponent implements OnDestroy, OnInit{
     this.isSubmitting = true;
     this.editorForm.disable();
 
-    let slug = this.route.snapshot.params['slug'];
+    const slug = this.route.snapshot.params['slug'];
 
     this.articleService
       .send({ ...this.editorForm.value }, slug)
       .pipe(takeUntil(this.destroy$))
       .subscribe({
-        next: (article) => {
-          this.snackBarService.openSnackbar(POST_CREATE_SUCCESS)
+        next: article => {
+          this.snackBarService.openSnackbar(POST_CREATE_SUCCESS);
           this.router.navigate(['article/', article.slug]);
         },
-        error: (err) => {
-          this.snackBarService.openSnackbar(this.errorListService.getErrorList(err), 'snackbar-error')
+        error: err => {
+          this.snackBarService.openSnackbar(
+            this.errorListService.getErrorList(err),
+            'snackbar-error'
+          );
           this.isSubmitting = false;
           this.editorForm.enable();
         },

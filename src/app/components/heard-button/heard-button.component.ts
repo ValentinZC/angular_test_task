@@ -1,14 +1,20 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { IArticle } from "../../models/article";
-import { Subject, switchMap, takeUntil } from "rxjs";
-import { ArticleService } from "../../services/article.service";
-import { UserService } from "../../services/user.service";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  Output,
+} from '@angular/core';
+import { IArticle } from '../../models/article';
+import { Subject, switchMap, takeUntil } from 'rxjs';
+import { ArticleService } from '../../services/article.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-heard-button',
-  templateUrl: './heard-button.component.html'
+  templateUrl: './heard-button.component.html',
 })
-export class HeardButtonComponent implements OnDestroy{
+export class HeardButtonComponent implements OnDestroy {
   public destroy$ = new Subject<void>();
   public isSubmitted = false;
 
@@ -17,9 +23,8 @@ export class HeardButtonComponent implements OnDestroy{
 
   constructor(
     private articleService: ArticleService,
-    private userService: UserService,
-  ) {
-  }
+    private userService: UserService
+  ) {}
 
   ngOnDestroy() {
     this.destroy$.next();
@@ -34,7 +39,7 @@ export class HeardButtonComponent implements OnDestroy{
         switchMap(() => {
           return this.article.favorited
             ? this.articleService.unLiked(this.article.slug)
-            : this.articleService.liked(this.article.slug)
+            : this.articleService.liked(this.article.slug);
         }),
         takeUntil(this.destroy$)
       )
@@ -43,7 +48,7 @@ export class HeardButtonComponent implements OnDestroy{
           this.isSubmitted = false;
           this.toggle.emit(!this.article.favorited);
         },
-        error: () => this.isSubmitted = false
-      })
+        error: () => (this.isSubmitted = false),
+      });
   }
 }
