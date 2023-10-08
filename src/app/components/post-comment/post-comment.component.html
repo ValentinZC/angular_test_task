@@ -1,8 +1,0 @@
-<mat-card id="post-comment">
-  <mat-card-content>{{comment.body}}</mat-card-content>
-  <mat-card-footer>
-    <span class="primary">{{comment.author.username}}</span>
-    <span>{{comment.createdAt | date :'medium'}}</span>
-    <mat-icon *ngIf="isEditable$" (click)="onRemove()">delete</mat-icon>
-  </mat-card-footer>
-</mat-card>
