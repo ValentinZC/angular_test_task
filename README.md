@@ -6,7 +6,7 @@ Node v18.16.1
 
 [API Specs](https://realworld-docs.netlify.app/docs/specs/frontend-specs/swagger/)
 
-Demo
+[Demo](https://valentinzc.github.io/angular_test_task/)
 
 ## Description
 
